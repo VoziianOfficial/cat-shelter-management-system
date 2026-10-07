@@ -2,6 +2,9 @@ from utils import generate_request_id, get_current_time
 
 
 class AdoptionRequest:
+    """
+    Represents an adoption request for a shelter cat.
+    """
     def __init__(self, person_name, phone, email, cat, message):
         self.person_name = person_name
         self.phone = phone
@@ -23,11 +26,13 @@ class AdoptionRequest:
         print(f"Status: {self.status}")
         print(f"Date: {self.created_at}")
 
+
     def mark_contacted(self):
-        if self.status == "new":
-            self.status = "contacted"
-        else:
+        if self.status != "new":
             return False
+
+        self.status = "contacted"
+        return True
 
     def approve(self):
         if self.status not in ["new", "contacted"]:

@@ -2,6 +2,10 @@ from utils import generate_donation_id, get_current_time
 
 
 class Donation:
+    """
+    Represents a donation to the shelter or a specific cat.
+    """
+
     def __init__(self, donor_name, purpose, amount, cat):
         self.donation_id = generate_donation_id()
         self.donor_name = donor_name
@@ -17,6 +21,7 @@ class Donation:
             return False
 
     def show_info(self):
+        print(f"Donation ID: {self.donation_id}")
         print(f"Donor Name: {self.donor_name}")
         print(f"Amount: {self.amount}")
         print(f"Purpose: {self.purpose}")
@@ -26,3 +31,5 @@ class Donation:
 
         else:
             print(f"For cat: {self.cat.name}")
+
+        print(f"Date: {self.created_at}")
